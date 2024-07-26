@@ -1,0 +1,6 @@
+@BTGIn_back_HostAddress = http://localhost:5298
+
+GET {{BTGIn_back_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
