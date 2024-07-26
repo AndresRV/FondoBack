@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34902.65
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BTGIn-back", "BTGIn-back\BTGIn-back.csproj", "{8E3A11CD-02C8-48C3-AC85-D1B13A874441}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BTGIn-back", "BTGIn-back\BTGIn-back.csproj", "{8E3A11CD-02C8-48C3-AC85-D1B13A874441}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BTGIn-back.Entitites", "BTGIn-back.Entitites\BTGIn-back.Entitites.csproj", "{55D9678E-B80C-4772-A946-2BA8EA19041C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BTGIn-back.Business", "BTGIn-back.Business\BTGIn-back.Business.csproj", "{3EF047E3-1089-47FA-9879-24788F846939}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BTGIn-back.Repositories", "BTGIn_back.Repositories\BTGIn-back.Repositories.csproj", "{3E1AF315-BB03-42A5-B3D6-6725BB2C6F55}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{8E3A11CD-02C8-48C3-AC85-D1B13A874441}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E3A11CD-02C8-48C3-AC85-D1B13A874441}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E3A11CD-02C8-48C3-AC85-D1B13A874441}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55D9678E-B80C-4772-A946-2BA8EA19041C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55D9678E-B80C-4772-A946-2BA8EA19041C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55D9678E-B80C-4772-A946-2BA8EA19041C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55D9678E-B80C-4772-A946-2BA8EA19041C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EF047E3-1089-47FA-9879-24788F846939}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EF047E3-1089-47FA-9879-24788F846939}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EF047E3-1089-47FA-9879-24788F846939}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EF047E3-1089-47FA-9879-24788F846939}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E1AF315-BB03-42A5-B3D6-6725BB2C6F55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E1AF315-BB03-42A5-B3D6-6725BB2C6F55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E1AF315-BB03-42A5-B3D6-6725BB2C6F55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E1AF315-BB03-42A5-B3D6-6725BB2C6F55}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

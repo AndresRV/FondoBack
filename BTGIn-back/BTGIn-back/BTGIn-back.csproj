@@ -14,4 +14,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BTGIn-back.Business\BTGIn-back.Business.csproj" />
+    <ProjectReference Include="..\BTGIn-back.Entitites\BTGIn-back.Entitites.csproj" />
+  </ItemGroup>
+
 </Project>

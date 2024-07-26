@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>BTGIn_back.Business</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BTGIn-back.Entitites\BTGIn-back.Entitites.csproj" />
+    <ProjectReference Include="..\BTGIn_back.Repositories\BTGIn-back.Repositories.csproj" />
+  </ItemGroup>
+
+</Project>
