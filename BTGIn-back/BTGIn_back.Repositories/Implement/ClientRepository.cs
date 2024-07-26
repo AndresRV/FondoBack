@@ -6,18 +6,29 @@ namespace BTGIn_back.Repositories.Implement
 {
     public class ClientRepository : IClientRepository
     {
-        private readonly IMongoCollection<Client> _entities;
+        private readonly IMongoCollection<Client> _entity;
 
         public ClientRepository(IMongoDatabase database)
         {
-            _entities = database.GetCollection<Client>("client");
+            _entity = database.GetCollection<Client>("client");
         }
 
-        public async Task CreateAsync(Client entity)
+        public async Task<Client> GetByIdentificationAsync(int identification)
         {
-            await _entities.InsertOneAsync(entity);
+            return await _entity.Find(client => client.Identification == identification).FirstOrDefaultAsync();
         }
 
+        public async Task CreateAsync(Client client)
+        {
+            await _entity.InsertOneAsync(client);
+        }
+
+        public async Task UpdateAsync(string id, Client client)
+        {
+            await _entity.ReplaceOneAsync(client => client.Id == id, client);
+        }
+
+        /*
         public async Task DeleteAsync(string id)
         {
             await _entities.DeleteOneAsync(entity => entity.Id == id);
@@ -31,11 +42,6 @@ namespace BTGIn_back.Repositories.Implement
         public async Task<Client> GetAsync(string id)
         {
             return await _entities.Find(entity => entity.Id == id).FirstOrDefaultAsync();
-        }
-
-        public async Task UpdateAsync(string id, Client entity)
-        {
-            await _entities.ReplaceOneAsync(entity => entity.Id == id, entity);
-        }
+        }*/
     }
 }

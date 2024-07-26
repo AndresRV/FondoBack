@@ -9,10 +9,11 @@ namespace BTGIn_back
     {
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
-
-            services.AddTransient<IClientService, ClientService>();
+            services.AddTransient<IClientTransactionsService, ClientTransactionsService>();
 
             services.AddScoped<IClientRepository, ClientRepository>();
+            services.AddScoped<IFundRepository, FundRepository>();
+            services.AddScoped<ITransactionRepository, TransactionRepository>();
 
             return services;
         }

@@ -43,4 +43,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+// Use custom exception middleware
+app.UseMiddleware<CustomExceptionMiddleware>();
+
 app.Run();

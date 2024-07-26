@@ -3,13 +3,24 @@ using MongoDB.Bson;
 
 namespace BTGIn_back.Entitites
 {
+    [BsonIgnoreExtraElements]
     public class Client
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string? Id { get; set; }
+
+        [BsonElement("name")]
         public required string Name {  get; set; }
+
+        [BsonElement("identification")]
+        public required int Identification {  get; set; }
+
+        [BsonElement("cash")]
         public required double Cash { get; set; }
-        public List<Fund> Funds { get; set; } = [];
+
+        [BsonIgnoreIfNull]
+        [BsonElement("funds")]
+        public List<Fund>? Funds { get; set; } = [];
     }
 }

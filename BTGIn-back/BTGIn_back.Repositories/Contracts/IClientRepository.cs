@@ -4,10 +4,13 @@ namespace BTGIn_back.Repositories.Contracts
 {
     public interface IClientRepository
     {
+        Task<Client> GetByIdentificationAsync(int identification);
+        Task CreateAsync(Client client);
+        Task UpdateAsync(string id, Client client);
+
+        /*
         Task<List<Client>> GetAllAsync();
         Task<Client> GetAsync(string id);
-        Task CreateAsync(Client entity);
-        Task UpdateAsync(string id, Client entity);
-        Task DeleteAsync(string id);
+        Task DeleteAsync(string id);*/
     }
 }
