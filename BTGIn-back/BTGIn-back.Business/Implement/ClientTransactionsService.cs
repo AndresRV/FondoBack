@@ -2,6 +2,7 @@
 using BTGIn_back.Business.Exceptions;
 using BTGIn_back.Entitites;
 using BTGIn_back.Entitites.DTO.Request;
+using BTGIn_back.Entitites.DTO.Response;
 using BTGIn_back.Repositories.Contracts;
 using System;
 using System.Collections.Generic;
@@ -62,6 +63,27 @@ namespace BTGIn_back.Business.Implement
             await RecordTransactionAsync(FUND_CANCELLATION, true, recoveredCapital, client, fundToRemove);
         }
 
+        public async Task<List<TransactionsHistoryResponse>> GetTransactionsHistory(int clientIdentification)
+        {
+            List<TransactionsHistoryResponse> transactionsHistoryResponse = [];
+
+            List<Transaction> transactions = await _transactionRepository.GetTransactionsByClientIdentification(clientIdentification);
+            transactions.ForEach(transaction => transactionsHistoryResponse.Add(
+                new()
+                {
+                    Type = transaction.Type,
+                    Amount = transaction.Amount,
+                    Date = transaction.Date,
+                    IsAcepted = transaction.IsAcepted,
+                    ClientCash = transaction.Client.Cash,
+                    FundName = transaction.Fund.Name,
+                    FundCategory = transaction.Fund.Category
+                })
+            );
+
+            return transactionsHistoryResponse;
+        }
+
         #region private
         private async Task ValidateFundNotRegistred(string fundName, double inscriptionCapital, Client client, Fund fund)
         {
@@ -102,41 +124,5 @@ namespace BTGIn_back.Business.Implement
             await _transactionRepository.CreateAsync(transaction);
         }
         #endregion
-
-
-
-        /*
-        public ClientService(IClientRepository clientRepository)
-        {
-            _clientRepository = clientRepository;
-        }
-
-        public async Task CreateAsync(Client entity)
-        {
-            await _clientRepository.CreateAsync(entity);
-        }
-
-        public async Task DeleteAsync(string id)
-        {
-            //await _clientRepository.DeleteAsync(id);
-        }
-
-        public async Task<List<Client>> GetAllAsync()
-        {
-            return null; //await _clientRepository.GetAllAsync();
-        }
-
-        public async Task<Client> GetAsync(string id)
-        {
-            return null;// await _clientRepository.GetAsync(id);
-        }
-
-        public async Task UpdateAsync(string id, Client entity)
-        {
-            await _clientRepository.UpdateAsync(id, entity);
-        }         
-         
-         
-         */
     }
 }

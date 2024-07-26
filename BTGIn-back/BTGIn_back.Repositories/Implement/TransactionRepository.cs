@@ -17,5 +17,10 @@ namespace BTGIn_back.Repositories.Implement
         {
             await _entity.InsertOneAsync(transaction);
         }
+
+        public async Task<List<Transaction>> GetTransactionsByClientIdentification(int clientIdentification)
+        {
+            return await _entity.Find(transactions => transactions.Client.Identification.Equals(clientIdentification)).ToListAsync();
+        }
     }
 }

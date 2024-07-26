@@ -27,21 +27,5 @@ namespace BTGIn_back.Repositories.Implement
         {
             await _entity.ReplaceOneAsync(client => client.Id == id, client);
         }
-
-        /*
-        public async Task DeleteAsync(string id)
-        {
-            await _entities.DeleteOneAsync(entity => entity.Id == id);
-        }
-
-        public async Task<List<Client>> GetAllAsync()
-        {
-            return await _entities.Find(entity => true).ToListAsync();
-        }
-
-        public async Task<Client> GetAsync(string id)
-        {
-            return await _entities.Find(entity => entity.Id == id).FirstOrDefaultAsync();
-        }*/
     }
 }

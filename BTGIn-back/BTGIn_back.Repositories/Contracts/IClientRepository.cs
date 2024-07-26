@@ -7,10 +7,5 @@ namespace BTGIn_back.Repositories.Contracts
         Task<Client> GetByIdentificationAsync(int identification);
         Task CreateAsync(Client client);
         Task UpdateAsync(string id, Client client);
-
-        /*
-        Task<List<Client>> GetAllAsync();
-        Task<Client> GetAsync(string id);
-        Task DeleteAsync(string id);*/
     }
 }
