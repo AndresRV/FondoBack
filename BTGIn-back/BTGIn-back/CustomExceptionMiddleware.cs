@@ -8,7 +8,9 @@ namespace BTGIn_back
     {
         private readonly static Dictionary<Type, HttpStatusCode> ExceptionStatusCodes = new()
         {
-            { typeof(FundAlreadyRegistredException), HttpStatusCode.Conflict }
+            { typeof(FundAlreadyRegistredException), HttpStatusCode.Conflict },
+            { typeof(InsufficientCashException), HttpStatusCode.BadRequest },
+            { typeof(KeyNotFoundException), HttpStatusCode.NotFound }
         };
 
         private readonly RequestDelegate _next;
@@ -39,7 +41,7 @@ namespace BTGIn_back
             if (!ExceptionStatusCodes.TryGetValue(exception.GetType(), out HttpStatusCode codigoHttp))
                 codigoHttp = HttpStatusCode.InternalServerError;
 
-            context.Response.StatusCode = (int)codigoHttp; //exception is FundAlreadyRegistredException ? (int)HttpStatusCode.Conflict : (int)HttpStatusCode.InternalServerError;
+            context.Response.StatusCode = (int)codigoHttp;
 
             var response = new { message = exception.Message };
 

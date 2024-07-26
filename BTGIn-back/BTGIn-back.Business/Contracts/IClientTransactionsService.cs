@@ -6,5 +6,6 @@ namespace BTGIn_back.Business.Contracts
     public interface IClientTransactionsService
     {
         Task FundInscription(FundInscriptionRequest fundInscriptionRequest);
+        Task FundDisenrollment(FundDisenrollmentRequest fundDisenrollmentRequest);
     }
 }

@@ -17,6 +17,12 @@ namespace BTGIn_back.Controllers
             return Created();
         }
 
+        [HttpDelete("/fund")]
+        public async Task<IActionResult> FundDisenrollment([FromBody] FundDisenrollmentRequest fundDisenrollmentRequest)
+        {
+            await _clientTransactionsService.FundDisenrollment(fundDisenrollmentRequest);
+            return NoContent();
+        }
 
 
 
