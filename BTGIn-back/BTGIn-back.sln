@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BTGIn-back.Business", "BTGI
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BTGIn-back.Repositories", "BTGIn_back.Repositories\BTGIn-back.Repositories.csproj", "{3E1AF315-BB03-42A5-B3D6-6725BB2C6F55}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BTGIn-backTest", "BTGIn-backTest\BTGIn-backTest.csproj", "{67EB32ED-7FD5-436B-B615-90E477110389}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{3E1AF315-BB03-42A5-B3D6-6725BB2C6F55}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E1AF315-BB03-42A5-B3D6-6725BB2C6F55}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E1AF315-BB03-42A5-B3D6-6725BB2C6F55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67EB32ED-7FD5-436B-B615-90E477110389}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67EB32ED-7FD5-436B-B615-90E477110389}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67EB32ED-7FD5-436B-B615-90E477110389}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67EB32ED-7FD5-436B-B615-90E477110389}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
