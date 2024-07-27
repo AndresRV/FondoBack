@@ -46,4 +46,11 @@ app.MapControllers();
 // Use custom exception middleware
 app.UseMiddleware<CustomExceptionMiddleware>();
 
+// Inicializar la base de datos
+using (var scope = app.Services.CreateScope())
+{
+    var initializer = scope.ServiceProvider.GetRequiredService<DatabaseInitializer>();
+    await initializer.InitializeAsync();
+}
+
 app.Run();
