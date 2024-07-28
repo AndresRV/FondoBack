@@ -5,5 +5,6 @@ namespace BTGIn_back.Repositories.Contracts
     public interface IFundRepository
     {
         Task<Fund> GetByNameAsync(string name);
+        Task<List<Fund>> GetAll();
     }
 }

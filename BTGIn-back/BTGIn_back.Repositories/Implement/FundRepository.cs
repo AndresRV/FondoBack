@@ -17,5 +17,10 @@ namespace BTGIn_back.Repositories.Implement
         {
             return await _entity.Find(fun => fun.Name == name).FirstOrDefaultAsync();
         }
+
+        public async Task<List<Fund>> GetAll()
+        {
+            return await _entity.Find(fund => true).ToListAsync();
+        }
     }
 }

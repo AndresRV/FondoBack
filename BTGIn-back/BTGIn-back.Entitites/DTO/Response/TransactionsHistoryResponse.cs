@@ -2,12 +2,9 @@
 {
     public class TransactionsHistoryResponse
     {
-        public required string Type { get; set; }
-        public required double Amount { get; set; }
-        public DateTime Date { get; set; }
-        public bool IsAcepted { get; set; }
-        public required double ClientCash { get; set; }
-        public required string FundName { get; set; }
-        public required string FundCategory { get; set; }
+        public required ClientDto Client { get; set; }
+        public List<TransactionHistoryDto> TransactionHistory { get; set; } = [];
+        public List<FundDto> FundsAvailable { get; set; } = [];
+        public List<FundDto> RegisteredFunds { get; set; } = [];
     }
 }

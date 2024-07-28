@@ -7,6 +7,6 @@ namespace BTGIn_back.Business.Contracts
     {
         Task FundInscription(FundInscriptionRequest fundInscriptionRequest);
         Task FundDisenrollment(FundDisenrollmentRequest fundDisenrollmentRequest);
-        Task<List<TransactionsHistoryResponse>> GetTransactionsHistory(int clientIdentification);
+        Task<TransactionsHistoryResponse> GetTransactionsHistory(int clientIdentification);
     }
 }

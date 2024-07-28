@@ -1,12 +1,10 @@
 ﻿using BTGIn_back.Business.Contracts;
 using BTGIn_back.Business.Exceptions;
 using BTGIn_back.Entitites;
+using BTGIn_back.Entitites.DTO;
 using BTGIn_back.Entitites.DTO.Request;
 using BTGIn_back.Entitites.DTO.Response;
 using BTGIn_back.Repositories.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Net;
 
 namespace BTGIn_back.Business.Implement
 {
@@ -63,25 +61,61 @@ namespace BTGIn_back.Business.Implement
             await RecordTransactionAsync(FUND_CANCELLATION, true, recoveredCapital, client, fundToRemove);
         }
 
-        public async Task<List<TransactionsHistoryResponse>> GetTransactionsHistory(int clientIdentification)
+        public async Task<TransactionsHistoryResponse> GetTransactionsHistory(int clientIdentification)
         {
-            List<TransactionsHistoryResponse> transactionsHistoryResponse = [];
+            Client client = await _clientRepository.GetByIdentificationAsync(clientIdentification)
+                ?? throw new KeyNotFoundException("El cliente no está registrado");
+            ClientDto clientDto = new()
+            {
+                Name = client.Name,
+                Identification = client.Identification,
+                Cash = client.Cash,
+                CountRegisteredFunds = client.Funds?.Count ?? 0
+            };
+            List<FundDto> funRegisteredDto = [];
+            client.Funds.ForEach(fund => funRegisteredDto.Add(
+                new()
+                {
+                    Name = fund.Name,
+                    MinimumRegistrationAmount = fund.MinimumRegistrationAmount,
+                    Category = fund.Category,
+                    InscriptionCapital = fund.InscriptionCapital
+                })
+            );
 
+            List<TransactionHistoryDto> transactionsHistoryDto = [];
             List<Transaction> transactions = await _transactionRepository.GetTransactionsByClientIdentification(clientIdentification);
-            transactions.ForEach(transaction => transactionsHistoryResponse.Add(
+            transactions.ForEach(transaction => transactionsHistoryDto.Add(
                 new()
                 {
                     Type = transaction.Type,
                     Amount = transaction.Amount,
                     Date = transaction.Date,
                     IsAcepted = transaction.IsAcepted,
-                    ClientCash = transaction.Client.Cash,
-                    FundName = transaction.Fund.Name,
-                    FundCategory = transaction.Fund.Category
+                    FundName = transaction.Fund.Name
                 })
             );
 
-            return transactionsHistoryResponse;
+            List<string> namesOfRegisteredFunds = client.Funds.Select(fund => fund.Name).ToList();
+            List<FundDto> fundsAvailableDto = [];
+            List<Fund> funds = await _fundRepository.GetAll();
+            foreach (Fund fund in funds.Where(fund => !namesOfRegisteredFunds.Contains(fund.Name)))
+            {
+                fundsAvailableDto.Add(new()
+                {
+                    Name = fund.Name,
+                    MinimumRegistrationAmount = fund.MinimumRegistrationAmount,
+                    Category = fund.Category
+                });
+            }
+
+            return new()
+            {
+                Client = clientDto,
+                TransactionHistory = transactionsHistoryDto,
+                FundsAvailable = fundsAvailableDto,
+                RegisteredFunds = funRegisteredDto
+            };
         }
 
         #region private

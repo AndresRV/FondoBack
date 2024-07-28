@@ -20,7 +20,10 @@ namespace BTGIn_back.Repositories.Implement
 
         public async Task<List<Transaction>> GetTransactionsByClientIdentification(int clientIdentification)
         {
-            return await _entity.Find(transactions => transactions.Client.Identification.Equals(clientIdentification)).ToListAsync();
+            return await _entity.Find(transactions => transactions.Client.Identification.Equals(clientIdentification))
+                .SortByDescending(transactions => transactions.Date)
+                .Limit(5)
+                .ToListAsync();
         }
     }
 }

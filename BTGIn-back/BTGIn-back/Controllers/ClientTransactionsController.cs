@@ -27,8 +27,8 @@ namespace BTGIn_back.Controllers
         [HttpGet("user/{clientIdentification}")]
         public async Task<IActionResult> GetTransactionsHistory(int clientIdentification)
         {
-            List<TransactionsHistoryResponse> transactionsHistories = await _clientTransactionsService.GetTransactionsHistory(clientIdentification);
-            return Ok(transactionsHistories);
+            TransactionsHistoryResponse transactionHistory = await _clientTransactionsService.GetTransactionsHistory(clientIdentification);
+            return Ok(transactionHistory);
         }
     }
 }
