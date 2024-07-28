@@ -10,14 +10,14 @@ namespace BTGIn_back.Controllers
     [Route("[controller]")]
     public class ClientTransactionsController(IClientTransactionsService _clientTransactionsService) : ControllerBase
     {
-        [HttpPost("/fund")]
+        [HttpPost("fund")]
         public async Task<IActionResult> FundInscription([FromBody] FundInscriptionRequest fundInscriptionRequest)
         {
             await _clientTransactionsService.FundInscription(fundInscriptionRequest);
             return Created();
         }
 
-        [HttpDelete("/fund")]
+        [HttpDelete("fund")]
         public async Task<IActionResult> FundDisenrollment([FromBody] FundDisenrollmentRequest fundDisenrollmentRequest)
         {
             await _clientTransactionsService.FundDisenrollment(fundDisenrollmentRequest);
