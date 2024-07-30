@@ -1,0 +1,112 @@
+{
+	"info": {
+		"_postman_id": "f21ee202-743c-4e49-9c31-1d41e8206e8b",
+		"name": "BTG",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24950149"
+	},
+	"item": [
+		{
+			"name": "add fund",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"clientName\": \"uno\",\n  \"clientIdentification\": 123,\n  \"fundName\": \"FDO-ACCIONES\",\n  \"inscriptionCapital\": 325000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44362/ClientTransactions/fund",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44362",
+					"path": [
+						"ClientTransactions",
+						"fund"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "exit fund",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"clientIdentification\": 123,\n  \"fundName\": \"FDO-ACCIONES\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44362/ClientTransactions/fund",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44362",
+					"path": [
+						"ClientTransactions",
+						"fund"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get transactions history",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					}
+				],
+				"url": {
+					"raw": "https://localhost:44362/ClientTransactions/user/123",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44362",
+					"path": [
+						"ClientTransactions",
+						"user",
+						"123"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
