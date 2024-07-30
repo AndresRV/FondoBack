@@ -6,7 +6,8 @@ WORKDIR /app
 EXPOSE 8080
 EXPOSE 8081
 
-#ENV ConnectionDB "mongodb://127.0.0.1:27017"
+ARG CONNECTION_DB
+ENV ConnectionDB=$CONNECTION_DB
 ENV testEVN "SiTest"
 
 WORKDIR /app
