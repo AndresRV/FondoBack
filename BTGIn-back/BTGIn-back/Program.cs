@@ -12,7 +12,7 @@ builder.Services.Configure<MongoDBSettings>(builder.Configuration.GetSection("Mo
 builder.Services.AddSingleton<IMongoClient>(sp =>
 {
     var settings = sp.GetRequiredService<IOptions<MongoDBSettings>>().Value;
-    return new MongoClient(settings.ConnectionString);
+    return new MongoClient(Environment.GetEnvironmentVariable("ConnectionDB") ?? settings.ConnectionString);
 });
 builder.Services.AddScoped(sp =>
 {
